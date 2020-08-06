@@ -1,0 +1,39 @@
+<list id="1">
+  <ResponseRule id="2">
+    <name>Master Repository Update failed</name>
+    <description>Sends an email notification when &quot;Master Repository Update failed&quot; events are received.</description>
+    <eventType>epoStatusEvent</eventType>
+    <locale>en</locale>
+    <conditionURI>rule:condition?conditionSexp=%28+where+%28+eq+epoStatusEvent.eventID+%2216003%22+%29+%29</conditionURI>
+    <actions id="3">
+      <response-action id="4">
+        <commandId>response.send-email</commandId>
+        <params id="5">
+          <entry>
+            <string>body</string>
+            <string>ePolicy Orchestrator Notification&#xd;
+Response Name: {responseRuleName}&#xd;
+Event Type Name: {responseEventType}&#xd;
+Description: Mohon Periksa Master Repository Jalankan Ulang pada Server task &quot;UPDATE MASTER REPOSIROTY&quot; Karena Gagal Mengambil Update ke &quot;SERVER MCAFEE&quot; mengkibatkan seluruh client tidak terupdate&#xd;
+&#xd;
+Event Description: {eventDesc}&#xd;
+Source Computers: {sourceComputers}&#xd;
+</string>
+          </entry>
+          <entry>
+            <string>subject</string>
+            <string>&quot;UPDATE MASTER REPOSITORY Failed&quot;</string>
+          </entry>
+          <entry>
+            <string>importance</string>
+            <string>HIGH</string>
+          </entry>
+          <entry>
+            <string>recipients</string>
+            <string>Please Your Input mail Address</string>
+          </entry>
+        </params>
+      </response-action>
+    </actions>
+  </ResponseRule>
+</list>
